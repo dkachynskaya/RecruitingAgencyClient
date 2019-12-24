@@ -1,0 +1,17 @@
+    <div class="card blog-post pointer"  *ngFor="let ad of adService.moderAds">            
+            <div class="card-body">    
+
+              <h4 class="card-title">{{ad.PositionName}}</h4>
+              <span class="text-black font-weight-bold anchor" > Ad blocked: {{ad.IsBlocked}} </span>       
+              <span class="text-black font-weight-bold anchor" >{{ad.CreateDate | date : "MMM d, y"}}</span>                               
+            <br>
+
+            <div class="edit-buttons">       
+                <button (click)="moderService.BlockAd(ad.Id)">Block ad</button>
+            </div>
+
+            <div class="edit-buttons">       
+                <button (click)="moderService.UnblockAd(ad.Id)">Unblock ad</button>
+            </div>
+          </div>
+        </div>   

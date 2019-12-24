@@ -1,0 +1,32 @@
+
+
+<div class="add-post-form jumbotron container text-center">
+  
+  <form #AddPostForm="ngForm"  (ngSubmit)="onSubmit(AddPostForm) ">
+    <div class="form-group">
+        <label class="control-label" for="positionName">Position Name:</label>
+        <textarea class="form-control" rows="1" #title="ngModel" name="positionName" (ngModel)="addAd.positionName" ></textarea>
+      </div>
+      <div class="form-group">
+        <label class="control-label" for="location">Location:</label>
+        <textarea class="form-control" rows="1" #title="ngModel" name="location" (ngModel)="addAd.location" ></textarea>
+      </div>
+      <div class="form-group">
+        <label class="control-label" for="company">Company:</label>
+        <textarea class="form-control" rows="1" #title="ngModel" name="company" (ngModel)="addAd.company" ></textarea>
+      </div>
+
+    <div class="form-group">
+        <label class="control-label" for="positionDescription">Position Description:</label>
+    <quill-editor [style]="editorStyle" [modules]="config"  #positionDescription="ngModel" name="positionDescription" (ngModel)="addAd.positionDescription">  </quill-editor>    
+    </div>
+    
+    <input class="btn btn-success" type="submit"  id="submit" value="Add new ad ">
+  </form>
+</div>
+
+
+
+
+    
+ 

@@ -1,0 +1,56 @@
+<div class="card blog-post pointer"  >            
+        <div class="card-body">
+
+            <div class="edit-buttons" >
+                <button (click)="adOnEdit=true"> &#9998; </button>
+                <button (click)="OnDeleteAd()">&times; </button>
+            </div> 
+
+              <!-- Initial Ad     -->
+        <div class="initialAd" *ngIf="!adOnEdit">
+          <h4 class="card-title">{{adService.ad.PositionName}}</h4>
+          <h5>Location: {{adService.ad.Location}}</h5> 
+          <h5>Company: {{adService.ad.Company}}</h5> 
+          <h5 class="card-title">    <label [innerHtml]="adService.ad.PositionDescription"></label></h5> 
+          <span class="text-black font-weight-bold anchor" >Creation Date: {{adService.ad.CreateDate | date : "MMM d, y"}}</span>    
+                 
+          <div><br></div>  
+          <h5>Author: {{adService.ad.User.Login}}</h5>      
+          <div><br></div> 
+          
+
+        </div> 
+
+              <!-- Ad  edit  -->
+              <form #EditAdForm="ngForm" (ngSubmit)="OnEditAd(EditAdForm)" *ngIf="adOnEdit">
+                 
+                <div class="form-group">
+                   <label class="control-label" for="PositionName">Position Name:</label>
+                     <textarea class="form-control" rows="1" #PositionName="ngModel" name="PositionName" [(ngModel)]="adService.ad.PositionName"></textarea>  
+                  </div>
+
+                  <div class="form-group">
+                    <label class="control-label" for="Location">Location:</label>
+                      <textarea class="form-control" rows="1" #Location="ngModel" name="Location" [(ngModel)]="adService.ad.Location"></textarea>  
+                   </div>
+
+                   <div class="form-group">
+                    <label class="control-label" for="Company">Company:</label>
+                      <textarea class="form-control" rows="1" #Company="ngModel" name="Company" [(ngModel)]="adService.ad.Company"></textarea>  
+                   </div>
+
+                  <div class="form-group">
+                      <label class="control-label" for="PositionDescription">Position Description:</label>
+                  <quill-editor [style]="editorStyle" [modules]="config"  #PositionDescription="ngModel" name="PositionDescription" [(ngModel)]="adService.ad.PositionDescription">  </quill-editor>    
+                  </div>
+
+                 
+
+                  <input class="btn btn-danger" type="submit" id="submit" value="Edit">
+                </form>
+
+          
+
+        </div>
+    </div>
+    

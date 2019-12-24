@@ -1,0 +1,29 @@
+<nav class="navbar navbar-light bg-white">
+        <a class="navbar-brand text-dark">User:  "{{service.userDetails.Login}}" </a>
+        <button class="btn btn-secondary my-2 my-sm-0" (click)="addAd()">New ad</button>
+        <button *ngIf="service.userDetails.IsAdmin" class="btn btn-secondary my-2 my-sm-0" (click)="userManager()">User manager</button>
+        <button *ngIf="service.userDetails.IsModerator" class="btn btn-secondary my-2 my-sm-0" (click)="adModerator()">Ad manager</button>
+        <button class="btn btn-secondary my-2 my-sm-0" (click)="onProfileEdit()">Edit Profile</button>  
+        <button class="btn btn-secondary my-2 my-sm-0" (click)="onLogout()">Logout</button>        
+</nav>    
+     
+      <div class="card m-5" style="width:18rem" *ngIf="service.userDetails">
+        <ul class="list-group">
+
+          <li class="list-group-item"><strong>Name : </strong>{{service.userDetails.FirstName}} {{service.userDetails.LastName}}</li>
+          <li class="list-group-item"><strong>Email : </strong>{{service.userDetails.Email}}</li>
+          <li class="list-group-item"><strong>RegistrationDate : </strong>{{service.userDetails.RegistrationDate | date : "MMM d, y"}}     </li>  
+          <li class="list-group-item" *ngIf="service.userDetails.IsAdmin"><strong>User Type : Admin</strong></li> 
+          <li class="list-group-item" *ngIf="service.userDetails.IsModerator"><strong>User Type : Moderator</strong></li> 
+        </ul>
+     </div>
+
+        <div class="card blog-post pointer"  *ngFor="let ad of service.userDetails.Ads">            
+          <div class="card-body">    
+            <h4 class="card-title">{{ad.PositionName}}</h4>     
+            <div><br></div>  
+            <span class="text-black font-weight-bold anchor" >{{ad.CreateDate | date : "MMM d, y"}}</span>    
+            <div  (click)="populateForms(ad)" >  <h5>Read more...</h5>  </div>
+          </div>
+      </div>
+      

@@ -1,0 +1,19 @@
+
+<div class="row">
+    <div class="col-md-10">
+      
+      <div class="card blog-post pointer"  *ngFor="let ad of adService.ads">            
+        <div class="card-body">    
+          <h4 class="card-title">{{ad.PositionName}}</h4>     
+          <div><br></div>      
+          <span class="text-black font-weight-bold anchor" >{{ad.CreateDate | date : "MMM d, y"}}</span>    
+          <div  (click)="populateForm(ad)" >  <h5>Read more...</h5>  </div>
+        </div>
+      </div>
+    </div>
+  </div>  
+       
+        
+  
+  
+  

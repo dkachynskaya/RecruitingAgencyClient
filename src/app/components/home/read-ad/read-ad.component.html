@@ -1,0 +1,14 @@
+<div class="card blog-post pointer"  >    
+    <div class="card-body">
+      <h4 class="card-title">{{adService.ad.PositionName}}</h4> 
+          <div><br></div>  
+      <h5>Location: {{adService.ad.Location}}</h5> 
+      <h5>Company: {{adService.ad.Company}}</h5> 
+      <h5 class="card-title"><label [innerHtml]="adService.ad.PositionDescription"></label></h5>  
+      <span class="text-black font-weight-bold anchor" >{{adService.ad.CreateDate | date : "MMM d, y"}}</span>    
+      <h5>Author: {{adService.ad.User.Login}}</h5>      
+
+
+
+    </div>
+</div>

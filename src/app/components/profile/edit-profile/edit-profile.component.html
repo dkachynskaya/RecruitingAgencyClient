@@ -1,0 +1,71 @@
+<div class="row">
+<div class="col-sm-1"></div>
+<div class="edit-profile-form container col-sm-5">
+  <label class="edit-label">Edit Profile:</label>
+  <form #EditProfileForm="ngForm" novalidate (ngSubmit)="OnSubmit()">
+    
+    <div class="form-group">      
+      <label class="control-label" for="FirstName">First Name </label>
+
+      <input name="FirstName" type="text" required #Name="ngModel"  [(ngModel)]="service.editProfile.FirstName">
+
+      <span *ngIf="Name.errors?.required" class="label label-warning">
+        Name is required
+      </span>
+    </div>  
+
+    <div class="form-group">
+      <label class="control-label" for="LastName">Last Name</label>
+      <input type="text" required name="LastName" #LastName="ngModel" [(ngModel)]="service.editProfile.LastName">
+      <span *ngIf="LastName.errors?.required" class="label label-warning">
+        Last Name is required
+      </span>
+    </div>
+    
+    <div class="form-group">
+      <label class="control-label">Email</label>
+      <input type="email" name="Email" #Email="ngModel" [(ngModel)]="service.editProfile.Email" required pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$">
+      <span *ngIf="(!Email.valid)" class="label label-warning">
+        Email is required and format should be
+        <i>example@gmail.com</i>
+      </span>
+    </div>
+      
+    <input type="submit" class="btn btn-secondary" id="submit" value="Save Profile Changes">
+  </form>
+</div>
+
+<!--change password-->
+
+<div class="container col-sm-5 edit-profile-form">
+  <label class="edit-label">Change password:</label>
+  <form #EditPasswordForm="ngForm" novalidate  (ngSubmit)="OnSubmitPass()">
+    <div class="form-group">
+      <label class="control-label" >Old Password:</label>
+      <input type="password" required #oldPassword="ngModel" name="oldPassword" [(ngModel)]="service.editPassword.oldPassword">
+      
+    </div>
+
+    <div class="form-group">
+      <label class="control-label">New Password:</label>
+      <input type="password" required name="newPassword" #newPassword="ngModel" [(ngModel)]="service.editPassword.newPassword">      
+   
+    </div>
+
+    <div class="form-group">
+      <label class="control-label">Confirm Password:</label>
+      <input type="password" required name="confirmPassword" #confirmPassword="ngModel" [(ngModel)]="service.editPassword.confirmPassword">
+             
+    </div>
+    <input class="btn btn-secondary" type="submit"  id="submitPass" value="Save">
+  </form>
+
+
+  <div style="height: 50px;"></div>
+  <div class="delete-ac">
+    <label class="control-label">Want to delete account?</label>
+    <button class="btn btn-secondary" (click)="OnDeleteAcc()">Delete my account</button> 
+  </div>
+</div>
+</div> 
+
